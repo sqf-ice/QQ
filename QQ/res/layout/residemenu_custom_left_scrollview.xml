@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+      
+     <RelativeLayout
+        android:layout_marginTop="50dp"
+        android:id="@+id/mine_avator_relative"
+        android:layout_width="match_parent"
+        android:layout_height="75dp">
+
+        <com.tencent.hq.qq.widget.CircleImageView
+            android:id="@+id/mine_avatar"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true" 
+            android:layout_marginLeft="20dp"
+            app:civ_border_width="1dp"
+            app:civ_border_color="@color/whites"
+            android:src="@drawable/mine_avatar"/>
+
+        <TextView
+            android:id="@+id/mine_nick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="14dp"
+            android:textSize="25sp"
+            android:layout_toRightOf="@+id/mine_avatar"
+            android:text="一笑奈何" />
+
+        <ImageView
+            android:layout_marginLeft="7dp"
+            android:id="@+id/mine_vip"
+            android:layout_width="40dp"
+            android:layout_height="27dp"
+            android:layout_alignTop="@+id/mine_nick"
+            android:layout_toRightOf="@+id/mine_nick"
+            android:src="@drawable/vip" />
+
+        <ImageView
+            android:layout_marginTop="7dp"
+            android:id="@+id/star_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/mine_nick"
+            android:layout_below="@+id/mine_nick"
+            android:src="@drawable/star" />
+
+        <ImageView
+            
+            android:id="@+id/start_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/star_1"
+            android:layout_toRightOf="@+id/star_1"
+            android:src="@drawable/star" />
+
+    </RelativeLayout>
+   <RelativeLayout
+    android:id="@+id/mine_sign_relative"
+
+    android:layout_width="match_parent"
+    android:layout_height="45dp">
+
+    <TextView
+        android:id="@+id/sign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:text="个性签名:" />
+
+    <TextView
+        android:id="@+id/sign_content"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:paddingRight="20dp"
+        android:layout_toRightOf="@+id/sign"
+        android:text="做自己人生的CEO" />
+
+    
+    <TextView
+            android:id="@+id/tv_set_name"
+            style="@style/Smile.TextView._Black"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="100dp"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/register_bottom_arrow" />
+  
+    </RelativeLayout>
+     <View 
+        android:layout_width="270dp"
+        android:layout_height="1dp"
+        android:background="@color/devide_line"/>
+    
+    
+    <ScrollView
+        android:id="@+id/sv_left_menu"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:scrollbars="none" >
+       
+        <LinearLayout
+            android:id="@+id/layout_left_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        </LinearLayout>
+        
+    </ScrollView>
+</LinearLayout>
