@@ -5,7 +5,7 @@
 [![platform](https://img.shields.io/badge/platform-Android-yellow.svg)](https://www.android.com)
 
 ##动态效果预览
-温馨提示：因为gif资源较大，加载较慢，第一次观看请耐心等待  
+温馨提示：因为gif资源较大，加载较慢，第一次观看请耐心等待或者 ![点此下载demo](https://github.com/HuTianQi/QQ/blob/master/QQ.apk)   
 ![image](https://github.com/HuTianQi/QQ/blob/master/QQ.gif)  
 
 ##主要功能  
