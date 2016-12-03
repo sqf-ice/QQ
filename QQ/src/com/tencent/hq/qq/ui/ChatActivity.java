@@ -74,14 +74,7 @@ import com.tencent.hq.qq.widget.xlist.XListView;
 import com.tencent.hq.qq.widget.xlist.XListView.IXListViewListener;
 
 
-/**
- * �������
- * 
- * @ClassName: ChatActivity
- * @Description: TODO
- * @author smile
- * @date 2014-6-3 ����4:33:11
- */
+
 @SuppressLint({ "ClickableViewAccessibility", "InflateParams" })
 public class ChatActivity extends ActivityBase implements OnClickListener,
 		IXListViewListener, EventListener {
@@ -120,20 +113,18 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 		setContentView(R.layout.activity_chat);
 		manager = BmobChatManager.getInstance(this);
 		MsgPagerNum = 0;
-		// ��װ�������
+		
 		targetUser = (BmobChatUser) getIntent().getSerializableExtra("user");
 		targetId = targetUser.getObjectId();
-//		BmobLog.i("�������" + targetUser.getUsername() + ",targetId = "
-//				+ targetId);
-		//ע��㲥������
+
 		initNewMessageBroadCast();
 		initView();
 	}
 	
 	private void initRecordManager(){
-		// ������ع�����
+		
 		recordManager = BmobRecordManager.getInstance(this);
-		// ����������С����--�����￪���߿����Լ�ʵ�֣���ʣ��10������µĸ��û�����ʾ������΢�ŵ���������
+		
 		recordManager.setOnRecordChangeListener(new OnRecordChangeListener() {
 	
 			@Override
@@ -146,15 +137,15 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 			public void onTimeChanged(int recordTime, String localPath) {
 				// TODO Auto-generated method stub
 				BmobLog.i("voice", "已录音长度:" + recordTime);
-				if (recordTime >= BmobRecordManager.MAX_RECORD_TIME) {// 1���ӽ�������Ϣ
-					// ��Ҫ���ð�ť
+				if (recordTime >= BmobRecordManager.MAX_RECORD_TIME) {
+					
 					btn_speak.setPressed(false);
 					btn_speak.setClickable(false);
-					// ȡ��¼����
+					
 					layout_record.setVisibility(View.INVISIBLE);
-					// ����������Ϣ
+					
 					sendVoiceMessage(localPath, recordTime);
-					//��Ϊ�˷�ֹ����¼��ʱ��󣬻�෢һ��������ȥ�������
+					
 					handler.postDelayed(new Runnable() {
 	
 						@Override
@@ -179,15 +170,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 		initVoiceView();
 	}
 
-	/**
-	 * ��ʼ����������
-	 * 
-	 * @Title: initVoiceView
-	 * @Description: TODO
-	 * @param
-	 * @return void
-	 * @throws
-	 */
+	
 	private void initVoiceView() {
 		layout_record = (RelativeLayout) findViewById(R.id.layout_record);
 		tv_voice_tips = (TextView) findViewById(R.id.tv_voice_tips);
@@ -198,7 +181,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	}
 
 	/**
-	 * ����˵��
+	 *
 	 * @ClassName: VoiceTouchListen
 	 * @Description: TODO
 	 * @author smile
@@ -237,18 +220,18 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 				v.setPressed(false);
 				layout_record.setVisibility(View.INVISIBLE);
 				try {
-					if (event.getY() < 0) {// ����¼��
+					if (event.getY() < 0) {
 						recordManager.cancelRecording();
 						BmobLog.i("voice", "放弃发送语音");
 					} else {
 						int recordTime = recordManager.stopRecording();
 						if (recordTime > 1) {
-							// ���������ļ�
+							
 							BmobLog.i("voice", "发送语音");
 							sendVoiceMessage(
 									recordManager.getRecordFilePath(targetId),
 									recordTime);
-						} else {// ¼��ʱ���̣�����ʾ¼����̵���ʾ
+						} else {
 							layout_record.setVisibility(View.GONE);
 							showShortToast().show();
 						}
@@ -264,7 +247,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	}
 
 	/**
-	 * ����������Ϣ
+	 * 
 	 * @Title: sendImageMessage
 	 * @Description: TODO
 	 * @param @param localPath
@@ -299,7 +282,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	Toast toast;
 
 	/**
-	 * ��ʾ¼��ʱ���̵�Toast
+	 * Toast
 	 * @Title: showShortToast
 	 * @return void
 	 * @throws
@@ -317,7 +300,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	}
 
 	/**
-	 * ��ʼ������������Դ
+	 * 
 	 * @Title: initVoiceAnimRes
 	 * @Description: TODO
 	 * @param
@@ -333,16 +316,14 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 				getResources().getDrawable(R.drawable.chat_icon_voice6) };
 	}
 
-	/**
-	 * ������Ϣ��ʷ������ݿ��ж���
-	 */
+	
 	private List<BmobMsg> initMsgData() {
 		List<BmobMsg> list = BmobDB.create(this).queryMessages(targetId,MsgPagerNum);
 		return list;
 	}
 
 	/**
-	 * ����ˢ��
+	 *
 	 * @Title: initOrRefresh
 	 * @Description: TODO
 	 * @param
@@ -377,29 +358,28 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	}
 
 	private void initBottomView() {
-		// �����
+		
 		btn_chat_add = (Button) findViewById(R.id.btn_chat_add);
 		btn_chat_emo = (Button) findViewById(R.id.btn_chat_emo);
 		btn_chat_add.setOnClickListener(this);
 		btn_chat_emo.setOnClickListener(this);
-		// ���ұ�
+		
 		btn_chat_keyboard = (Button) findViewById(R.id.btn_chat_keyboard);
 		btn_chat_voice = (Button) findViewById(R.id.btn_chat_voice);
 		btn_chat_voice.setOnClickListener(this);
 		btn_chat_keyboard.setOnClickListener(this);
 		btn_chat_send = (Button) findViewById(R.id.btn_chat_send);
 		btn_chat_send.setOnClickListener(this);
-		// ������
+		
 		layout_more = (LinearLayout) findViewById(R.id.layout_more);
 		layout_emo = (LinearLayout) findViewById(R.id.layout_emo);
 		layout_add = (LinearLayout) findViewById(R.id.layout_add);
 		initAddView();
 		initEmoView();
 
-		// ���м�
-		// ������
+		
 		btn_speak = (Button) findViewById(R.id.btn_speak);
-		// �����
+		
 		edit_user_comment = (EmoticonsEditText) findViewById(R.id.edit_user_comment);
 		edit_user_comment.setOnClickListener(this);
 		edit_user_comment.addTextChangedListener(new TextWatcher() {
@@ -439,7 +419,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	List<FaceText> emos;
 
 	/**
-	 * ��ʼ�����鲼��
+	 * 
 	 * @Title: initEmoView
 	 * @Description: TODO
 	 * @param
@@ -502,15 +482,15 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	MessageChatAdapter mAdapter;
 	
 	private void initXListView() {
-		// ���Ȳ�������ظ��
+		
 		mListView.setPullLoadEnable(false);
-		// ��������
+		
 		mListView.setPullRefreshEnable(true);
-		// ���ü�����
+		
 		mListView.setXListViewListener(this);
 		mListView.pullRefreshing();
 		mListView.setDividerHeight(0);
-		// �������
+		
 		initOrRefresh();
 		mListView.setSelection(mAdapter.getCount() - 1);
 		mListView.setOnTouchListener(new OnTouchListener() {
@@ -542,7 +522,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	}
 
 	/**
-	 * ��ʾ�ط���ť showResendDialog
+	 *  showResendDialog
 	 * @Title: showResendDialog
 	 * @Description: TODO
 	 * @param @param recent
@@ -564,7 +544,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 				dialogInterface.dismiss();
 			}
 		});
-		// ��ʾȷ�϶Ի���
+		
 		dialog.show();
 		dialog = null;
 	}
@@ -607,7 +587,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	}
 
 	/**
-	 * �ط�ͼƬ��Ϣ
+	 * 
 	 * @Title: resendImageMsg
 	 * @Description: TODO
 	 * @param @param parentV
@@ -667,7 +647,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
-		case R.id.edit_user_comment:// ����ı������
+		case R.id.edit_user_comment:
 			mListView.setSelection(mListView.getCount() - 1);
 			if (layout_more.getVisibility() == View.VISIBLE) {
 				layout_add.setVisibility(View.GONE);
@@ -675,7 +655,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 				layout_more.setVisibility(View.GONE);
 			}
 			break;
-		case R.id.btn_chat_emo:// ���Ц��ͼ��
+		case R.id.btn_chat_emo:
 			if (layout_more.getVisibility() == View.GONE) {
 				showEditState(true);
 			} else {
@@ -688,7 +668,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 			}
 
 			break;
-		case R.id.btn_chat_add:// ��Ӱ�ť-��ʾͼƬ�����ա�λ��
+		case R.id.btn_chat_add:
 			if (layout_more.getVisibility() == View.GONE) {
 				layout_more.setVisibility(View.VISIBLE);
 				layout_add.setVisibility(View.VISIBLE);
@@ -704,7 +684,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 			}
 
 			break;
-		case R.id.btn_chat_voice:// ������ť
+		case R.id.btn_chat_voice:
 			edit_user_comment.setVisibility(View.GONE);
 			layout_more.setVisibility(View.GONE);
 			btn_chat_voice.setVisibility(View.GONE);
@@ -712,10 +692,10 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 			btn_speak.setVisibility(View.VISIBLE);
 			hideSoftInputView();
 			break;
-		case R.id.btn_chat_keyboard:// ���̰�ť������͵������̲����ص�������ť
+		case R.id.btn_chat_keyboard:
 			showEditState(false);
 			break;
-		case R.id.btn_chat_send:// �����ı�
+		case R.id.btn_chat_send:
 			final String msg = edit_user_comment.getText().toString();
 			if (msg.equals("")) {
 				ShowToast("消息不能为空!");
@@ -726,22 +706,22 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 				ShowToast(R.string.network_tips);
 				// return;
 			}
-			// ��װBmobMessage����
+			
 			BmobMsg message = BmobMsg.createTextSendMsg(this, targetId, msg);
 			message.setExtra("Bmob");
 			
 			manager.sendTextMessage(targetUser, message);
-			// ˢ�½���
+			
 			refreshMessage(message);
 
 			break;
-		case R.id.tv_camera:// ����
+		case R.id.tv_camera:
 			selectImageFromCamera();
 			break;
-		case R.id.tv_picture:// ͼƬ
+		case R.id.tv_picture:
 			selectImageFromLocal();
 			break;
-		case R.id.tv_location:// λ��
+		case R.id.tv_location:
 			selectLocationFromMap();
 			break;
 		default:
@@ -766,7 +746,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 
 	private String localCameraPath = "";
 	 /**
-	 * ����������� startCamera
+	 *  startCamera
 	 * 
 	 * @Title: startCamera
 	 * @throws
@@ -787,7 +767,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	}
 
 	/**
-	 * ѡ��ͼƬ
+	 * 
 	 * @Title: selectImage
 	 * @Description: TODO
 	 * @param
@@ -811,7 +791,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 		super.onActivityResult(requestCode, resultCode, data);
 		if (resultCode == RESULT_OK) {
 			switch (requestCode) {
-			case BmobConstants.REQUESTCODE_TAKE_CAMERA:// ��ȡ��ֵ��ʱ����ϴ�path·���µ�ͼƬ��������
+			case BmobConstants.REQUESTCODE_TAKE_CAMERA:
 				ShowLog("本地图片地址" + localCameraPath);
 				sendImageMessage(localCameraPath);
 				break;
@@ -834,9 +814,9 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 					}
 				}
 				break;
-			case BmobConstants.REQUESTCODE_TAKE_LOCATION:// ����λ��
-				double latitude = data.getDoubleExtra("x", 0);// ά��
-				double longtitude = data.getDoubleExtra("y", 0);// ����
+			case BmobConstants.REQUESTCODE_TAKE_LOCATION:
+				double latitude = data.getDoubleExtra("x", 0);
+				double longtitude = data.getDoubleExtra("y", 0);
 				String address = data.getStringExtra("address");
 				if (address != null && !address.equals("")) {
 					sendLocationMessage(address, latitude, longtitude);
@@ -850,7 +830,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	}
 
 	/**
-	 * ����λ����Ϣ
+	 * 
 	 * @Title: sendLocationMessage
 	 * @Description: TODO
 	 * @param @param address
@@ -866,7 +846,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 			layout_add.setVisibility(View.GONE);
 			layout_emo.setVisibility(View.GONE);
 		}
-		// ��װBmobMessage����
+		
 		BmobMsg message = BmobMsg.createLocationSendMsg(this, targetId,
 				address, latitude, longtitude);
 		
@@ -876,7 +856,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	}
 
 	/**
-	 * Ĭ�����ϴ�����ͼƬ��֮�����ʾ���� sendImageMessage
+	 * sendImageMessage
 	 * @Title: sendImageMessage
 	 * @Description: TODO
 	 * @param @param localPath
@@ -915,10 +895,10 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	}
 
 	/**
-	 * ����Ƿ���Ц������ʾ�ı�������״̬
+	 * 
 	 * @Title: showEditState
 	 * @Description: TODO
-	 * @param @param isEmo: ����������ֺͱ���
+	 * @param @param isEmo: 
 	 * @return void
 	 * @throws
 	 */
@@ -940,7 +920,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 		}
 	}
 
-	// ��ʾ�����
+	
 	public void showSoftInputView() {
 		if (getWindow().getAttributes().softInputMode == WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN) {
 			if (getCurrentFocus() != null)
@@ -953,13 +933,13 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		// ����Ϣ�������ˢ�½���
+		
 		initOrRefresh();
-		MyMessageReceiver.ehList.add(this);// �������͵���Ϣ
-		// �п��������ڼ䣬������������֪ͨ������ʱ����Ҫ���֪ͨ�����δ����Ϣ��
+		MyMessageReceiver.ehList.add(this);
+		
 		BmobNotifyManager.getInstance(this).cancelNotify();
 		BmobDB.create(this).resetUnread(targetId);
-		//�����Ϣδ����-���Ҫ��ˢ��֮��
+		
 		MyMessageReceiver.mNewNum=0;
 	}
 
@@ -967,13 +947,13 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		MyMessageReceiver.ehList.remove(this);// �������͵���Ϣ
-		// ֹͣ¼��
+		MyMessageReceiver.ehList.remove(this);
+		
 		if (recordManager.isRecording()) {
 			recordManager.cancelRecording();
 			layout_record.setVisibility(View.GONE);
 		}
-		// ֹͣ����¼��
+		
 		if (NewRecordPlayClickListener.isPlaying
 				&& NewRecordPlayClickListener.currentPlayListener != null) {
 			NewRecordPlayClickListener.currentPlayListener.stopPlayRecord();
@@ -988,23 +968,23 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 				BmobMsg message = (BmobMsg) msg.obj;
 				String uid = message.getBelongId();
 				BmobMsg m = BmobChatManager.getInstance(ChatActivity.this).getMessage(message.getConversationId(), message.getMsgTime());
-				if (!uid.equals(targetId))// ����ǵ�ǰ��������������Ϣ��������
+				if (!uid.equals(targetId))
 					return;
 				mAdapter.add(m);
-				// ��λ
+				
 				mListView.setSelection(mAdapter.getCount() - 1);
-				//ȡ��ǰ��������δ����ʾ
+				
 				BmobDB.create(ChatActivity.this).resetUnread(targetId);
 			}
 		}
 	};
 
-	public static final int NEW_MESSAGE = 0x001;// �յ���Ϣ
+	public static final int NEW_MESSAGE = 0x001;
 	
 	NewBroadcastReceiver  receiver;
 	
 	private void initNewMessageBroadCast(){
-		// ע�������Ϣ�㲥
+		
 		receiver = new NewBroadcastReceiver();
 		IntentFilter intentFilter = new IntentFilter(BmobConfig.BROADCAST_NEW_MESSAGE);
 		
@@ -1013,7 +993,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	}
 	
 	/**
-	 * ����Ϣ�㲥������
+	 * 
 	 * 
 	 */
 	private class NewBroadcastReceiver extends BroadcastReceiver {
@@ -1022,25 +1002,25 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 			String from = intent.getStringExtra("fromId");
 			String msgId = intent.getStringExtra("msgId");
 			String msgTime = intent.getStringExtra("msgTime");
-			// �յ�����㲥��ʱ��message�Ѿ�����Ϣ���У���ֱ�ӻ�ȡ
+			
 			if(!TextUtils.isEmpty(from)&& !TextUtils.isEmpty(msgId)&& !TextUtils.isEmpty(msgTime)){
 				BmobMsg msg = BmobChatManager.getInstance(ChatActivity.this).getMessage(msgId, msgTime);
-				if (!from.equals(targetId))// ����ǵ�ǰ��������������Ϣ��������
+				if (!from.equals(targetId))
 					return;
-				//��ӵ���ǰҳ��
+				
 				mAdapter.add(msg);
-				// ��λ
+				
 				mListView.setSelection(mAdapter.getCount() - 1);
-				//ȡ��ǰ��������δ����ʾ
+				
 				BmobDB.create(ChatActivity.this).resetUnread(targetId);
 			}
-			// �ǵðѹ㲥���ս��
+			
 			abortBroadcast();
 		}
 	}
 	
 	/**
-	 * ˢ�½���
+	 * 
 	 * @Title: refreshMessage
 	 * @Description: TODO
 	 * @param @param message
@@ -1048,7 +1028,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	 * @throws
 	 */
 	private void refreshMessage(BmobMsg msg) {
-		// ���½���
+		
 		mAdapter.add(msg);
 		mListView.setSelection(mAdapter.getCount() - 1);
 		edit_user_comment.setText("");
@@ -1086,9 +1066,9 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	@Override
 	public void onReaded(String conversionId, String msgTime) {
 		// TODO Auto-generated method stub
-		// �˴�Ӧ�ù��˵����Ǻ͵�ǰ�û�������Ļ�ִ��Ϣ�����ˢ��
+		
 		if (conversionId.split("&")[1].equals(targetId)) {
-			// �޸Ľ�����ָ����Ϣ���Ķ�״̬
+			
 			for (BmobMsg msg : mAdapter.getList()) {
 				if (msg.getConversationId().equals(conversionId)
 						&& msg.getMsgTime().equals(msgTime)) {
