@@ -163,10 +163,7 @@ private OnClickListener signOnClickListener=new OnClickListener() {
 	
 	
 	
-	/**
-	 * button����¼�
-	 * @param view
-	 */
+	
 	public void onTabSelect(View view) {
 		switch (view.getId()) {
 		case R.id.btn_message:
@@ -228,7 +225,7 @@ private OnClickListener signOnClickListener=new OnClickListener() {
 	}
 	
 	
-	/** ˢ�½���
+	/** 
 	  * @Title: refreshNewMsg
 	  * @Description: TODO
 	  * @param @param message 
@@ -314,7 +311,7 @@ private OnClickListener signOnClickListener=new OnClickListener() {
 		refreshInvite(message);
 	}
 	
-	/** ˢ�º�������
+	/** 
 	  * @Title: notifyAddUser
 	  * @Description: TODO
 	  * @param @param message 
@@ -377,7 +374,7 @@ private OnClickListener signOnClickListener=new OnClickListener() {
 			unregisterReceiver(userReceiver);
 		} catch (Exception e) {
 		}
-		//ȡ��ʱ������
+		
 //		BmobChat.getInstance(this).stopPollService();
 	}
 
