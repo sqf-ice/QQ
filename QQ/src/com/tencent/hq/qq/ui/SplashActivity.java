@@ -18,35 +18,27 @@ import com.tencent.hq.qq.CustomApplcation;
 import com.tencent.hq.qq.R;
 import com.tencent.hq.qq.config.Config;
 
-/**
- * ��ҳ
- * 
- * @ClassName: SplashActivity
- * @Description: TODO
- * @author smile
- * @date 2014-6-4 ����9:45:43
- */
+
 public class SplashActivity extends BaseActivity {
 
 	private static final int GO_HOME = 100;
 	private static final int GO_LOGIN = 200;
 
-	// ��λ��ȡ��ǰ�û��ĵ���λ��
+
 	private LocationClient mLocationClient;
 
-	private BaiduReceiver mReceiver;// ע��㲥�����������ڼ��������Լ���֤key
+	private BaiduReceiver mReceiver;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
-		//�����õ���ģʽ����Ϊtrue��ʱ�򣬻���logcat��BmobChat�����һЩ��־���������ͷ����Ƿ������У�������˷��ش���Ҳ��һ����ӡ���������㿪���ߵ���
+		
 		BmobChat.DEBUG_MODE = true;
-		//BmobIM SDK��ʼ��--ֻ��Ҫ��һ�δ��뼴����ɳ�ʼ��
-		//�뵽Bmob����(http://www.bmob.cn/)����ApplicationId,�����ַ:http://docs.bmob.cn/android/faststart/index.html?menukey=fast_start&key=start_android
+		
 		BmobChat.getInstance(this).init(Config.applicationId);
-		// ������λ
+		
 		initLocClient();
 		
 		IntentFilter iFilter = new IntentFilter();
@@ -61,28 +53,22 @@ public class SplashActivity extends BaseActivity {
 		// TODO Auto-generated method stub
 		super.onResume();
 		if (userManager.getCurrentUser() != null) {
-			// ÿ���Զ���½��ʱ�����Ҫ�����µ�ǰλ�úͺ��ѵ�����
+			
 			updateUserInfos();
 			mHandler.sendEmptyMessageDelayed(GO_HOME, 2000);
 		} else {
 			mHandler.sendEmptyMessageDelayed(GO_LOGIN, 2000);
 		}
 	}
-	/**
-	 * ������λ�����µ�ǰ�û��ľ�γ�����
-	 * @Title: initLocClient
-	 * @Description: TODO
-	 * @param
-	 * @return void
-	 * @throws
-	 */
+	
+	
 	private void initLocClient() {
 		mLocationClient = CustomApplcation.getInstance().mLocationClient;
 		LocationClientOption option = new LocationClientOption();
-		option.setLocationMode(LocationMode.Hight_Accuracy);// ���ö�λģʽ:�߾���ģʽ
-		option.setCoorType("bd09ll"); // �����������:�ٶȾ�γ��
-		option.setScanSpan(1000);// ���÷���λ����ļ��ʱ��Ϊ1000ms:����1000Ϊ�ֶ���λһ�Σ����ڻ����1000��Ϊ��ʱ��λ
-		option.setIsNeedAddress(false);// ����Ҫ���ַ��Ϣ
+		option.setLocationMode(LocationMode.Hight_Accuracy);
+		option.setCoorType("bd09ll"); 
+		option.setScanSpan(1000);
+		option.setIsNeedAddress(false);
 		mLocationClient.setLocOption(option);
 		mLocationClient.start();
 	}
@@ -104,9 +90,7 @@ public class SplashActivity extends BaseActivity {
 		}
 	};
 
-	/**
-	 * ����㲥�����࣬���� SDK key ��֤�Լ������쳣�㲥
-	 */
+	
 	public class BaiduReceiver extends BroadcastReceiver {
 		public void onReceive(Context context, Intent intent) {
 			String s = intent.getAction();
