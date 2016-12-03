@@ -38,7 +38,7 @@ public class CustomApplcation extends Application {
 	public LocationClient mLocationClient;
 	public MyLocationListener mMyLocationListener;
 
-	public static BmobGeoPoint lastPoint = null;// ��һ�ζ�λ���ľ�γ��
+	public static BmobGeoPoint lastPoint = null;
 
 	@Override
 	public void onCreate() {
@@ -54,17 +54,17 @@ public class CustomApplcation extends Application {
 		mMediaPlayer = MediaPlayer.create(this, R.raw.notify);
 		mNotificationManager = (NotificationManager) getSystemService(android.content.Context.NOTIFICATION_SERVICE);
 		initImageLoader(getApplicationContext());
-		// ���û���½�����ȴӺ�����ݿ���ȡ������list�����ڴ���
+		
 		if (BmobUserManager.getInstance(getApplicationContext())
 				.getCurrentUser() != null) {
-			// ��ȡ���غ���user list���ڴ�,�����Ժ��ȡ����list
+			
 			contactList = CollectionUtils.list2map(BmobDB.create(getApplicationContext()).getContactList());
 		}
 		initBaidu();
 	}
 
 	/**
-	 * ��ʼ���ٶ����sdk initBaidumap
+	 * sdk initBaidumap
 	 * @Title: initBaidumap
 	 * @Description: TODO
 	 * @param
@@ -72,14 +72,14 @@ public class CustomApplcation extends Application {
 	 * @throws
 	 */
 	private void initBaidu() {
-		// ��ʼ����ͼSdk
+		
 		SDKInitializer.initialize(this);
-		// ��ʼ����λsdk
+		
 		initBaiduLocClient();
 	}
 
 	/**
-	 * ��ʼ���ٶȶ�λsdk
+	 * 
 	 * @Title: initBaiduLocClient
 	 * @Description: TODO
 	 * @param
@@ -93,7 +93,7 @@ public class CustomApplcation extends Application {
 	}
 
 	/**
-	 * ʵ��ʵλ�ص�����
+	 * 
 	 */
 	public class MyLocationListener implements BDLocationListener {
 
@@ -105,7 +105,7 @@ public class CustomApplcation extends Application {
 			if (lastPoint != null) {
 				if (lastPoint.getLatitude() == location.getLatitude()
 						&& lastPoint.getLongitude() == location.getLongitude()) {
-//					BmobLog.i("���λ�ȡ�����ͬ");// �����������ȡ���ĵ���λ���������ͬ�ģ����ٶ�λ
+//					
 					mLocationClient.stop();
 					return;
 				}
@@ -114,27 +114,26 @@ public class CustomApplcation extends Application {
 		}
 	}
 
-	/** ��ʼ��ImageLoader */
+	
 	public static void initImageLoader(Context context) {
 		File cacheDir = StorageUtils.getOwnCacheDirectory(context,
-				"hq/qq/Cache");// ��ȡ�������Ŀ¼��ַ
-		// ��������ImageLoader(���е�ѡ��ǿ�ѡ��,ֻʹ����Щ������붨��)����������趨��APPLACATION���棬����Ϊȫ�ֵ����ò���
+				"hq/qq/Cache");//
+		
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
 				context)
-				// �̳߳��ڼ��ص�����
+				
 				.threadPoolSize(3).threadPriority(Thread.NORM_PRIORITY - 2)
 				.memoryCache(new WeakMemoryCache())
 				.denyCacheImageMultipleSizesInMemory()
 				.discCacheFileNameGenerator(new Md5FileNameGenerator())
-				// �������ʱ���URI�����MD5 ����
+				
 				.tasksProcessingOrder(QueueProcessingType.LIFO)
-				.discCache(new UnlimitedDiscCache(cacheDir))// �Զ��建��·��
+				.discCache(new UnlimitedDiscCache(cacheDir))
 				// .defaultDisplayImageOptions(DisplayImageOptions.createSimple())
 				.writeDebugLogs() // Remove for release app
 				.build();
 		// Initialize ImageLoader with configuration.
-		ImageLoader.getInstance().init(config);// ȫ�ֳ�ʼ��������
-	}
+		ImageLoader.getInstance().init(config);//
 
 	public static CustomApplcation getInstance() {
 		return mInstance;
@@ -170,11 +169,11 @@ public class CustomApplcation extends Application {
 		return mMediaPlayer;
 	}
 	
-	public final String PREF_LONGTITUDE = "longtitude";// ����
+	public final String PREF_LONGTITUDE = "longtitude";
 	private String longtitude = "";
 
 	/**
-	 * ��ȡ����
+	 * 
 	 * 
 	 * @return
 	 */
@@ -186,7 +185,7 @@ public class CustomApplcation extends Application {
 	}
 
 	/**
-	 * ���þ���
+	 *
 	 * 
 	 * @param pwd
 	 */
@@ -203,7 +202,7 @@ public class CustomApplcation extends Application {
 	private String latitude = "";
 
 	/**
-	 * ��ȡγ��
+	 *
 	 * 
 	 * @return
 	 */
@@ -214,7 +213,7 @@ public class CustomApplcation extends Application {
 	}
 
 	/**
-	 * ����ά��
+	 * 
 	 * 
 	 * @param pwd
 	 */
@@ -229,7 +228,7 @@ public class CustomApplcation extends Application {
 	private Map<String, BmobChatUser> contactList = new HashMap<String, BmobChatUser>();
 
 	/**
-	 * ��ȡ�ڴ��к���user list
+	 * user list
 	 * 
 	 * @return
 	 */
@@ -238,7 +237,7 @@ public class CustomApplcation extends Application {
 	}
 
 	/**
-	 * ���ú���user list���ڴ���
+	 * 
 	 * @param contactList
 	 */
 	public void setContactList(Map<String, BmobChatUser> contactList) {
@@ -249,7 +248,7 @@ public class CustomApplcation extends Application {
 	}
 
 	/**
-	 * �˳���¼,��ջ������
+	 * 
 	 */
 	public void logout() {
 		BmobUserManager.getInstance(getApplicationContext()).logout();
