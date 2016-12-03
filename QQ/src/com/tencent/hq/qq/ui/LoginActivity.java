@@ -44,7 +44,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 		init();
-		//ע���˳��㲥
+		
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(BmobConstants.ACTION_REGISTER_SUCCESS_FINISH);
 		registerReceiver(receiver, filter);
@@ -53,13 +53,13 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 
 	public void showNotice() {
 		DialogTips dialog = new DialogTips(this,"��ʾ",getResources().getString(R.string.show_notice), "ȷ��",true,true);
-		// ���óɹ��¼�
+		
 		dialog.SetOnSuccessListener(new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialogInterface, int userId) {
 				
 			}
 		});
-		// ��ʾȷ�϶Ի���
+		
 		dialog.show();
 		dialog = null;
 	}
@@ -135,7 +135,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 						progress.setMessage("登陆成功...");
 					}
 				});
-				//�����û��ĵ���λ���Լ����ѵ�����
+				
 				updateUserInfos();
 				progress.dismiss();
 				Intent intent = new Intent(LoginActivity.this,MainActivity.class);
