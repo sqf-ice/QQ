@@ -301,6 +301,7 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 					} else {
 						boolean isExists = BmobDownloadManager.checkTargetPathExist(currentObjectId,item);
 						if(!isExists){
+							String netUrl = content.split("&")[0];
 							final String length = content.split("&")[1];
 							BmobDownloadManager downloadTask = new BmobDownloadManager(mContext,item,new DownloadListener() {
 								
