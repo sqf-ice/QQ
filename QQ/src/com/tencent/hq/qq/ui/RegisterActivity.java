@@ -82,7 +82,7 @@ public class RegisterActivity extends BaseActivity {
 		final User bu = new User();
 		bu.setUsername(name);
 		bu.setPassword(password);
-		//��user���豸id���а�aa
+		
 		bu.setSex(true);
 		bu.setDeviceType("android");
 		bu.setInstallId(BmobInstallation.getInstallationId(this));
@@ -93,13 +93,13 @@ public class RegisterActivity extends BaseActivity {
 				// TODO Auto-generated method stub
 				progress.dismiss();
 				ShowToast("注册成功");
-				// ���豸��username���а�
+				
 				userManager.bindInstallationForRegister(bu.getUsername());
-				//���µ���λ����Ϣ
+				
 				updateUserLocation();
-				//���㲥֪ͨ��½ҳ���˳�
+				
 				sendBroadcast(new Intent(BmobConstants.ACTION_REGISTER_SUCCESS_FINISH));
-				// ������ҳ
+				
 				Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
 				startActivity(intent);
 				finish();
