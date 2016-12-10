@@ -15,11 +15,12 @@
 - 支持个人中心的资料管理，用户可以自定义昵称，用户图像，个性签名等内容，这些内容都采取云端存储
 - 基于百度地图的LBS功能，可以查看附近的人，快速搭讪
 
-觉得不错的话，打赏一个吧  
-支付宝打赏  
-![image](https://github.com/HuTianQi/QQ/blob/master/a.PNG)  
-微信打赏  
-![image](https://github.com/HuTianQi/QQ/blob/master/wx.PNG) 
+觉得不错的话，打赏一个吧      
+支付宝打赏  
+![image](https://github.com/HuTianQi/QQ/blob/master/a.PNG) 
+
+微信打赏  
+![image](https://github.com/HuTianQi/QQ/blob/master/wx.PNG)  
 
 ##UI截图
 启动界面  
