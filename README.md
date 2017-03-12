@@ -20,10 +20,10 @@
 ###觉得不错的话，打赏一个鼓励我继续创作吧
 
 支付宝扫一扫打赏  
-![image](https://github.com/HuTianQi/QQ/blob/master/a.PNG) 
+![image](https://github.com/HuTianQi/QQ/blob/master/a.jpg) 
 
 微信扫一扫打赏   
-![image](https://github.com/HuTianQi/QQ/blob/master/wx.PNG)  
+![image](https://github.com/HuTianQi/QQ/blob/master/wx.jpg)  
 
 ##其他
 【美女笔记:一款类似印象笔记的App】 [https://github.com/HuTianQi/YingBeautyNote](https://github.com/HuTianQi/YingBeautyNote)  
