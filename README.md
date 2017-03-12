@@ -23,7 +23,7 @@
 ![image](https://github.com/HuTianQi/QQ/blob/master/a.jpg) 
 
 微信扫一扫打赏   
-![image](https://github.com/HuTianQi/QQ/blob/master/wx.jpg)  
+![image](https://github.com/HuTianQi/QQ/blob/master/wx.png)  
 
 ##其他
 【美女笔记:一款类似印象笔记的App】 [https://github.com/HuTianQi/YingBeautyNote](https://github.com/HuTianQi/YingBeautyNote)  
