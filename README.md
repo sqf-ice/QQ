@@ -28,7 +28,7 @@
 ##其他
 【美女笔记:一款类似印象笔记的App】 [https://github.com/HuTianQi/YingBeautyNote](https://github.com/HuTianQi/YingBeautyNote)  
 【CoolImageView】[https://github.com/HuTianQi/CoolImageView](https://github.com/HuTianQi/CoolImageView)  
-【点击一下广告支持一下我吧】[点此链接](http://jingyan.baidu.com/article/4d58d54108e0e89dd4e9c09e.html)  
+【我的个人网站，欢迎大家访问】[http://www.huqi.tk/](http://www.huqi.tk/)  
   
 ##UI截图
 启动界面  
