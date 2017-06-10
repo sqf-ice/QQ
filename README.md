@@ -20,7 +20,7 @@
 - 基于百度地图的LBS功能，可以查看附近的人，快速搭讪
 
 ###欢迎大家扫码二维码关注我的微信公众号
-![image](https://github.com/HuTianQi/QQ/blob/master/my_wx.jpg)  
+![image](https://github.com/HuTianQi/QQ/blob/master/my_wx.jpg)    
 ###觉得不错的话，打赏一个鼓励我继续创作吧
 
 支付宝扫一扫打赏  
