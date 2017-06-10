@@ -29,8 +29,8 @@
 微信扫一扫打赏   
 ![image](https://github.com/HuTianQi/QQ/blob/master/wx.png)  
 
-##其他
-【美女笔记:一款类似印象笔记的App】 [https://github.com/HuTianQi/YingBeautyNote](https://github.com/HuTianQi/YingBeautyNote)  
+##其他  
+【颖火虫笔记:一款类似印象笔记的App】 [https://github.com/HuTianQi/YingBeautyNote](https://github.com/HuTianQi/YingBeautyNote)  
 【CoolImageView】[https://github.com/HuTianQi/CoolImageView](https://github.com/HuTianQi/CoolImageView)  
 【我的个人网站，欢迎大家访问】[http://www.huqi.tk/](http://www.huqi.tk/)  
   
