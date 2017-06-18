@@ -1,5 +1,5 @@
 ##  更多干货请访问我的个人网站：
-[www.huqi.tk](www.huqi.tk)
+[www.huqi.tk](http://www.huqi.tk)
 
 
 # QQ
